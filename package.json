@@ -14,9 +14,11 @@
   },
   "keywords": [
     "fault-tolerance",
+    "bulkhead",
+    "circuit-breaker",
+    "fallback",
     "retry",
     "timeout",
-    "circuit-breaker",
     "resilience",
     "typescript",
     "nodejs"
@@ -41,12 +43,14 @@
     "build": "tsc --sourceMap --project tsconfig.json",
     "prepare": "npm run clean && npm run build",
     "prepublishOnly": "npm run check && npm run build",
-    "lint": "eslint ./src --ext .ts",
+    "lint": "eslint ./src --ext .ts --report-unused-disable-directives",
+    "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write 'src/**/*.ts'",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run test",
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "release": "semantic-release"
   },
   "devDependencies": {
